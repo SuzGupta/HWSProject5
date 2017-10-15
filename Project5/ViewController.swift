@@ -15,8 +15,6 @@ class ViewController: UITableViewController {
     var allWords = [String]()
     var usedWords = [String]()
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,13 +23,23 @@ class ViewController: UITableViewController {
             if let startWords = try? String(contentsOfFile: startWordsPath) {
                 allWords = startWords.components(separatedBy: "\n")
             }
-            else {
-                allWords = ["silkworm"]
-            }
+        } else {
+            allWords = ["silkworm"]
         }
+//        if let startWordsPath = Bundle.main.path(forResource: "start", ofType: "txt") {
+//            if let startWords = try? String(contentsOfFile: startWordsPath) {
+//                allWords = startWords.components(separatedBy: "\n")
+//            }
+//            else {
+//                allWords = ["silkworm"]
+//            }
+//            print(allWords)
+//        }
         func startGame() {
             allWords = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: allWords) as! [String]
+            print(allWords)
             title = allWords[0]
+            print(title)
             usedWords.removeAll(keepingCapacity: true)
             tableView.reloadData()
         }
@@ -43,9 +51,6 @@ class ViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-
 
 }
 
