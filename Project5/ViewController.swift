@@ -20,6 +20,7 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         if let startWordsPath = Bundle.main.path(forResource: "start", ofType: "txt") {
+            print("startWordsPath is \(startWordsPath)")
             if let startWords = try? String(contentsOfFile: startWordsPath) {
                 allWords = startWords.components(separatedBy: "\n")
             }
